@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — Mis Hà English</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Admin — Mis Hà English</h1>
+    <div id="login-box" class="card">
+      <h2>Đăng nhập quản trị</h2>
+      <p>Nhập mật khẩu admin để tiếp tục.</p>
+      <input id="admin-password" placeholder="Mật khẩu" type="password" />
+      <button id="btn-login">Đăng nhập</button>
+      <p class="note">Mật khẩu admin được cấu hình là <strong>Admin.123</strong></p>
+    </div>
+
+    <div id="admin-panel" style="display:none;">
+      <h2>Quản lý nội dung</h2>
+      <div class="card">
+        <label><strong>GitHub Username</strong> (ví dụ: computerchicuong-stack)</label>
+        <input id="gh-user" placeholder="owner" />
+        <label><strong>Repo name</strong> (ví dụ: misha-english)</label>
+        <input id="gh-repo" placeholder="repo" />
+        <label><strong>Path to data file</strong> (mặc định: data/data.json)</label>
+        <input id="gh-path" value="data/data.json" />
+        <label><strong>Personal Access Token (keep private)</strong></label>
+        <input id="gh-token" placeholder="ghp_xxx..." />
+        <p class="note">Token cần quyền <code>repo</code> để cập nhật file. Không chia sẻ token.</p>
+      </div>
+
+      <div class="card">
+        <h3>Lịch học (Schedule)</h3>
+        <div id="schedule-list"></div>
+        <button id="add-schedule">Thêm lịch</button>
+      </div>
+
+      <div class="card">
+        <h3>Bảng điểm (Students)</h3>
+        <div id="students-list"></div>
+        <button id="add-student">Thêm học sinh</button>
+      </div>
+
+      <div class="card">
+        <h3>Tin tức (News)</h3>
+        <div id="news-list-admin"></div>
+        <button id="add-news">Thêm thông báo</button>
+      </div>
+
+      <div class="card">
+        <button id="btn-save" class="primary">Lưu dữ liệu lên GitHub</button>
+        <p id="save-status"></p>
+      </div>
+    </div>
+
+    <div style="margin-top:30px;">
+      <a href="index.html">→ Xem trang public</a>
+    </div>
+  </main>
+
+  <script src="scripts/admin.js"></script>
+</body>
+</html>

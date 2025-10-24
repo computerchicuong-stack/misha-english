@@ -1,22 +1,28 @@
-Mis Hà English - Landing page demo
-Files:
-- index.html
-- style.css
-- data.js  <-- Edit this file to update schedule, students, news
-- script.js
-- images/logo-demo.png
-- images/banner.jpg
+Mis Hà English — CMS mini (admin + public)
+Repo target example: https://github.com/computerchicuong-stack/misha-english
+Place the files in repo root and ensure GitHub Pages is enabled (root branch).
 
-How to update content:
-1. Open data.js in a text editor (or Notepad).
-2. Edit the arrays: schedule, students, news.
-   - For students, change name, subject, score (number), note.
-3. Save the file and re-upload to GitHub (or refresh the page if running locally).
+Files included:
+- index.html (public)
+- admin.html (admin editor, password protected)
+- data/data.json (initial content)
+- assets/style.css, assets/logo-demo.png, assets/banner.jpg
+- scripts/main.js (public renderer), scripts/admin.js (admin editor + GitHub save)
 
-Deploy on GitHub Pages (quick):
-1. Create a GitHub repo (public), e.g., misha-english
-2. Upload all files and folders (index.html at repo root)
-3. In repo Settings -> Pages -> Choose branch 'main' and root folder -> Save
-4. GitHub will provide a URL like: https://<your-username>.github.io/misha-english
+Quick usage:
+1. Upload all files/folders to your GitHub repo (root). Enable Pages if not yet.
+2. Open: https://computerchicuong-stack.github.io/misha-english/admin.html
+3. Enter admin password: Admin.123
+4. Enter GitHub Username (owner) and Repo (misha-english) and path (data/data.json).
+5. Optionally enter a Personal Access Token with 'repo' permission to allow saving.
+   - If you don't enter token, you can still load current data.json.
+6. Edit schedule, students, news using the form, then click "Lưu dữ liệu lên GitHub".
+   - On save, the script PUTs to GitHub API to update data/data.json in your repo.
+7. Wait a minute and refresh your public page: https://computerchicuong-stack.github.io/misha-english/
 
-If you want, I can also give step-by-step screenshots for GitHub Pages deployment.
+Security notes:
+- Keep your token private. You can create a new token for this purpose and revoke later.
+- The admin uses a simple password on the client for UI hiding; it's not a secure auth method.
+- For production, consider server-side admin or OAuth flow.
+
+If you want, I can also push these files into your repo directly (if you provide temporary access) or guide you step-by-step.
