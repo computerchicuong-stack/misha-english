@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mis Hà English — Thông báo & Bảng điểm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="images/logo-demo.png" alt="Mis Hà English" class="logo" />
+        <div>
+          <h1>Mis Hà English</h1>
+          <p class="slogan">Together We Grow</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#schedule">Lịch học</a>
+        <a href="#scores">Bảng điểm</a>
+        <a href="#ranking">Xếp hạng</a>
+        <a href="#news">Tin tức</a>
+      </nav>
+    </div>
+    <div class="banner">
+      <img src="images/banner.jpg" alt="Banner Mis Hà English" />
+      <div class="banner-text">
+        <h2>Mis Hà English</h2>
+        <p>Together We Grow — Cập nhật lịch học, bảng điểm và tin tức mùa thi</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="schedule" class="card">
+      <h2>📅 Lịch học trong tuần</h2>
+      <div id="schedule-content">Đang tải lịch học...</div>
+    </section>
+
+    <section id="scores" class="card">
+      <h2>🧾 Bảng điểm tuần</h2>
+      <div class="table-wrap">
+        <table id="scores-table">
+          <thead>
+            <tr><th>Học sinh</th><th>Môn</th><th>Điểm</th><th>Nhận xét</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="ranking" class="card">
+      <h2>🏆 Bảng xếp hạng</h2>
+      <ol id="ranking-list"></ol>
+    </section>
+
+    <section id="news" class="card">
+      <h2>📰 Tin tức & Thông báo mùa thi</h2>
+      <div id="news-list"></div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>📞 Liên hệ Mis Hà</h2>
+      <p>Giáo viên: <strong>Mis Hà</strong></p>
+      <p>Hotline (ví dụ): <strong>0908 943 468</strong></p>
+      <p>Nhóm Zalo / Facebook lớp: <em>Thêm link hoặc tên nhóm tại đây</em></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Mis Hà English — Together We Grow</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
