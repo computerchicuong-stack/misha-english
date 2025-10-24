@@ -5,6 +5,9 @@ const schedule = [
   { day: "Thứ 2", subject: "Ngữ pháp (Grammar)", time: "17:00 - 18:30" },
   { day: "Thứ 4", subject: "Kỹ năng Nói (Speaking)", time: "17:00 - 18:30" },
   { day: "Thứ 6", subject: "Từ vựng & Writing", time: "17:00 - 18:30" }
+   { day: "Thứ 3", subject: "Ngữ pháp (Grammar)", time: "14:00 - 15:30" },
+  { day: "Thứ 5", subject: "Kỹ năng Nói (Speaking)", time: "14:00 - 15:30" },
+  { day: "Thứ 7", subject: "Từ vựng & Writing", time: "14:00 - 15:30" }
 ];
 
 const students = [
