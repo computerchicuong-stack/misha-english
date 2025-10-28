@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra 38 Câu Cựu Ước</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 60px; /* Thêm khoảng đệm trên cùng bằng chiều cao của thanh cố định */
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        /* CSS quan trọng để cố định thanh điều khiển */
+        #control-bar {
+            position: fixed; /* Cố định vị trí */
+            top: 0; /* Đặt ở đầu trang */
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Đảm bảo nó luôn nằm trên các nội dung khác */
+            text-align: center;
+        }
+        .control-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap; /* Cho phép xuống dòng nếu màn hình nhỏ */
+            justify-content: flex-start; /* Sắp xếp các nút về bên trái */
+            padding: 0 20px;
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+        /* Hết CSS cố định */
+
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px dashed #ccc;
+            transition: border-left 0.3s;
+        }
+        .question-title {
+            font-weight: bold;
+            color: #007bff; /* Màu xanh nổi bật */
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .explanation {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-style: italic;
+            border-left: 5px solid #ffc300;
+            display: none;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 5px; /* Để dễ nhìn trên màn hình nhỏ */
+            transition: background-color 0.3s;
+        }
+        #check-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        #toggle-btn {
+            background-color: #ffc107;
+            color: #343a40;
+        }
+        #toggle-done-count {
+            background-color: #17a2b8;
+            color: white;
+            margin-left: 0;
+            font-size: 0.8em;
+        }
+        .result-message {
+            margin-left: 15px;
+            font-weight: bold;
+            color: #dc3545;
+            display: none;
+            white-space: nowrap;
+        }
+        .done-count-message {
+            margin-left: 15px;
+            font-weight: bold;
+            color: #17a2b8;
+            display: none;
+            white-space: nowrap;
+        }
+        /* Định dạng cho phần thông tin liên hệ */
+        .contact-info {
+            margin: 30px 0px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="control-bar">
+        <div class="control-content">
+            <button id="check-btn" class="btn">Kiểm tra đáp án</button>
+            <button id="toggle-btn" class="btn">Ẩn/Hiện Giải thích</button>
+            <button id="toggle-done-count" class="btn">Hiện số câu đã làm</button>
+            <div id="done-count-message" class="done-count-message"></div>
+            <div id="result-message" class="result-message"></div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>📄 Bài Kiểm Tra 38 Câu Cựu Ước</h1>
+        <p>Chọn đánh dấu vào các câu trả lời đúng cho từng câu hỏi. Nhấn "Kiểm tra đáp án" để xem kết quả và "Ẩn/Hiện Giải thích" để ôn bài.</p>
+        
+        <form id="quiz-form">
+            
+            <div class="question-block" data-correct-index="3,4" data-type="checkbox">
+                <div class="question-title">Câu 1: BA PHƯƠNG CÁCH KHÁC NHAU MÀ ĐỨC CHÚA TRỜI PHÁN VỚI CHÚNG TA: </div>
+                <label><input type="checkbox" name="q1" value="1"> Qua giọng nói tự nhiên trong sự sáng tạo của Ngài.</label>
+                <label><input type="checkbox" name="q1" value="2"> Qua âm nhạc.</label>
+                <label><input type="checkbox" name="q1" value="3"> Qua Kinh Thánh lời thành văn của Ngài.</label>
+                <label><input type="checkbox" name="q1" value="4"> Qua Kinh Thánh lời thành văn của Ngài. (Được lặp lại - Vấn tinh là 1 ý đúng)</label>
+                <div class="explanation">Qua tiếng nói của tự nhiên trong sự sáng tạo, qua Kinh Thánh lời thành văn và qua Chúa Jesus (Lưu ý: trong các tùy chọn chỉ có 2 ý đúng).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 2: BA SỰ PHÂN CHIA CHÍNH CỦA SÁCH CỰU ƯỚC LÀ: </div>
+                <label><input type="radio" name="q2" value="1"> Lịch sử, Ngũ Kinh và Tân ước.</label>
+                <label><input type="radio" name="q2" value="2"> Luật pháp, tiên tri, thi ca.</label>
+                <label><input type="radio" name="q2" value="3"> Cựu ước, Tân ước và ngụy kinh</label>
+                <div class="explanation">Ba phần chính của Cựu Ước theo cách phân chia phổ biến là: Luật pháp (Ngũ Kinh), Tiên tri (Tiên tri đầu và Tiên tri sau), và Thi ca (hoặc Văn học/Khôn ngoan).</div>
+            </div>
+            
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 3: SỰ MẶC KHẢI CỦA ĐỨC CHÚA TRỜI VỚI CON NGƯỜI QUA: </div>
+                <label><input type="radio" name="q3" value="1"> Những hành động của Ngài</label>
+                <label><input type="radio" name="q3" value="2"> Những hành động và lời của Ngài.</label>
+                <label><input type="radio" name="q3" value="3"> Lời của Ngài.</label>
+                <div class="explanation">Sự mặc khải của Đức Chúa Trời không chỉ qua lời nói (Kinh Thánh) mà còn qua hành động (ví dụ: tạo hóa, giải cứu, ban ân điển) và đỉnh cao là qua Chúa Jesus. Vì vậy, cả hành động và lời Ngài là câu trả lời toàn diện nhất.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 4: SÁNG THẾ KÝ TƯỜNG THUẬT VỀ SỰ SÁNG TẠO, QUA ĐÓ CHÚNG TA BIẾT CON NGƯỜI ĐƯỢC DỰNG NÊN THEO: </div>
+                <label><input type="radio" name="q4" value="1"> Một ý tưởng bất chợt.</label>
+                <label><input type="radio" name="q4" value="2"> Hình ảnh của các thiên sứ.</label>
+                <label><input type="radio" name="q4" value="3"> Hình ảnh của Đức Chúa Trời.</label>
+                <div class="explanation">Sáng Thế Ký 1:26-27 chép rõ rằng con người được tạo dựng theo hình ảnh của Đức Chúa Trời (*Imago Dei*).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,2" data-type="checkbox">
+                <div class="question-title">Câu 5: TRONG SÁNG THẾ KÝ, ĐỨC CHÚA TRỜI BÀY TỎ CHÍNH NGÀI LÀ: </div>
+                <label><input type="checkbox" name="q5" value="1"> Đấng Sáng Tạo</label>
+                <label><input type="checkbox" name="q5" value="2"> Đấng luôn hiện có từ đời này sang đời kia.</label>
+                <label><input type="checkbox" name="q5" value="3"> Ngài không có ngày bắt đầu nhưng có sự kết thúc cuộc sống.</label>
+                <label><input type="checkbox" name="q5" value="4"> Mặc dù Ngài tạo dựng nên muôn vật, Ngài luôn hiện hữu tách biệt khỏi mọi vật.</label>
+                <div class="explanation">Đức Chúa Trời là Đấng Sáng Tạo (Sáng 1:1) và là Đấng Hằng Hữu (Ngài không có bắt đầu hay kết thúc).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3,4" data-type="checkbox">
+                <div class="question-title">Câu 6: Ý MUỐN CỦA ĐỨC CHÚA TRỜI KHI TẠO DỰNG CON NGƯỜI: </div>
+                <label><input type="checkbox" name="q6" value="1"> Đức Chúa Trời muốn con người quản trị trên mọi tạo vật.</label>
+                <label><input type="checkbox" name="q6" value="2"> Ngài không có ý định gì, con người tự do làm điều mình muốn.</label>
+                <label><input type="checkbox" name="q6" value="3"> Đức Chúa Trời muốn họ có một mối tương giao với Ngài.</label>
+                <label><input type="checkbox" name="q6" value="4"> Đức Chúa Trời cho con người có sự lựa chọn phát xuất từ tấm lòng.</label>
+                <div class="explanation">Mục đích của sự sáng tạo bao gồm việc con người quản trị trên trái đất (Sáng 1:28), có mối tương giao với Ngài (đi lại trong vườn Ê-đen), và có tự do lựa chọn (cây biết điều thiện điều ác).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3,4" data-type="checkbox">
+                <div class="question-title">Câu 7: CẢ A-ĐAM VÀ Ê-VA ĐÃ THẤT BẠI TRONG SỰ THỬ NGHIỆM. SỰ THẤT BẠI NÀY VÀ SỰ KHÔNG VÂNG LỜI ĐÃ DẪN ĐẾN: </div>
+                <label><input type="checkbox" name="q7" value="1"> Sự thay đổi trong mối quan hệ của con người với Đức Chúa Trời.</label>
+                <label><input type="checkbox" name="q7" value="2"> Giúp cho họ mạnh mẽ trong việc chống trả Sa-tan.</label>
+                <label><input type="checkbox" name="q7" value="3"> Một biến cố bi thảm nhất trong lịch sử loài người.</label>
+                <label><input type="checkbox" name="q7" value="4"> Họ đã trở thành nạn nhân do chính mình gây ra, nạn nhân bị hư mất.</label>
+                <div class="explanation">Tội lỗi đã gây ra sự đổ vỡ mối quan hệ với Đức Chúa Trời, là biến cố bi thảm dẫn đến sự chết và hư mất của loài người.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,2" data-type="radio">
+                <div class="question-title">Câu 8: CA-IN VÀ A-BÊN ĐẠI DIỆN CHO QUAN ĐIỂM CỦA 2 NHÓM NGƯỜI: </div>
+                <label><input type="radio" name="q8" value="1"> Nhóm người thấy họ cần Chúa nhưng phần lớn vẫn nhờ cậy vào đức hạnh của mình.</label>
+                <label><input type="radio" name="q8" value="2"> Nhóm người biết rằng họ sẽ bị hư mất khi họ chấp nhận của lễ Đức Chúa Trời đã cung cấp cho tội lỗi họ và tin cậy Ngài cho sự cứu rỗi.</label>
+                <label><input type="radio" name="q8" value="3"> Nhóm người không cần đến Cứu Chúa. Họ cảm thấy đủ trong đức hạnh của chính họ.</label>
+                <label><input type="radio" name="q8" value="4"> Nhóm người không cần Chúa và cả đức hạnh của chính họ.</label>
+                <div class="explanation">Ca-in đại diện cho những người muốn dùng công đức riêng để đến với Chúa (câu 1). A-bên đại diện cho những người biết phải nhờ cậy vào sự cứu chuộc (của lễ chuộc tội bằng huyết) mà Đức Chúa Trời đã chỉ định (câu 2). (Lưu ý: Nếu câu hỏi yêu cầu chọn 2 nhóm, thì cả 1 và 2 đều đúng, đại diện cho 2 kiểu người khác nhau, nhưng thông thường A-bên là kiểu người tin cậy vào Cứu Chúa).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 9: TẤT CẢ LOÀI NGƯỜI MÔ TẢ TRONG SÁNG THẾ KÝ 11 LÀ: </div>
+                <label><input type="radio" name="q9" value="1"> Những hậu tự không trực hệ của Nô-ê, nhưng họ đã có kiến thức về Đức Chúa Trời.</label>
+                <label><input type="radio" name="q9" value="2"> Những hậu tự trực hệ của Nô-ê, họ đã có kiến thức về Đức Chúa Trời.</label>
+                <label><input type="radio" name="q9" value="3"> Những hậu tự không trực hệ của Nô-ê, họ không có kiến thức về Đức Chúa Trời.</label>
+                <div class="explanation">Mọi người sau trận Đại Hồng Thủy đều là hậu tự trực hệ của Nô-ê (qua ba người con trai), và họ đều có kiến thức về Đức Chúa Trời từ Nô-ê.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2,3,4" data-type="checkbox">
+                <div class="question-title">Câu 10: MÔ TẢ VỀ ÁP-RA-HAM: </div>
+                <label><input type="checkbox" name="q10" value="1"> Ông là hậu tự của Nô-ê từ dòng dõi của Gia-phết.</label>
+                <label><input type="checkbox" name="q10" value="2"> Ông đã đáp ứng với sự kêu gọi của Đức Chúa Trời dành cho ông.</label>
+                <label><input type="checkbox" name="q10" value="3"> Ông bỏ sự an ninh và sự thịnh vượng của thành phố Ba-by-lôn.</label>
+                <label><input type="checkbox" name="q10" value="4"> Ông trông đợi tìm thấy một thành phố được phác thảo và xây dựng bởi Đức Chúa Trời, thành phố với những nền tảng vĩnh cửu.</label>
+                <div class="explanation">Áp-ra-ham là hậu tự của Sem (không phải Gia-phết). Các ý còn lại mô tả đúng về sự vâng lời (đáp ứng lời kêu gọi, bỏ quê hương U-rơ) và niềm tin của ông (trông đợi thành phố có nền tảng vững bền, Hê-bơ-rơ 11:10).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3,4,6" data-type="checkbox">
+                <div class="question-title">Câu 11: BỐN BIẾN CỐ CHÍNH TRONG ĐỜI SỐNG ÁP-RA-HAM: </div>
+                <label><input type="checkbox" name="q11" value="1"> Đức Chúa Trời chọn ông Áp-ram.</label>
+                <label><input type="checkbox" name="q11" value="2"> Đức Chúa Trời cho ông sở hữu ngay lập tức vùng đất Ca-na-an</label>
+                <label><input type="checkbox" name="q11" value="3"> Đức Chúa Trời đổi tên Áp-ram thành Áp-ra-ham,</label>
+                <label><input type="checkbox" name="q11" value="4"> Đức Chúa Trời tìm thấy Áp-ra-ham trọn thành với Ngài,</label>
+                <label><input type="checkbox" name="q11" value="5"> Đức Chúa Trời lập ông là tổ phụ của đức tin.</label>
+                <label><input type="checkbox" name="q11" value="6"> Đức Chúa Trời lập một giao ước với Áp-ra-ham và giữ lời hứa của Ngài</label>
+                <div class="explanation">Bốn biến cố chính trong đời sống Áp-ra-ham là: sự kêu gọi (chọn), giao ước (và lời hứa), sự đổi tên, và sự thử nghiệm/vâng lời (tìm thấy trọn thành).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3,4,5" data-type="checkbox">
+                <div class="question-title">Câu 12: MÔ TẢ ĐÚNG VỀ MÔI-SE: </div>
+                <label><input type="checkbox" name="q12" value="1"> Ông sinh ra từ cha mẹ thuộc chi phái Lê-vi.</label>
+                <label><input type="checkbox" name="q12" value="2"> Ông đã học nhiều điều trong suốt 38 năm ở cung điện Pha-ra-ôn.</label>
+                <label><input type="checkbox" name="q12" value="3"> Đức Chúa Trời đưa ông vào đồng vắng Si-nai cho phần huấn luyện chính thức thứ hai của Ngài.</label>
+                <label><input type="checkbox" name="q12" value="4"> Khi Môi-se 80 tuổi, Đức Chúa Trời hiện ra với ông và bày tỏ kế hoạch của Ngài trong cuộc đời của ông.</label>
+                <label><input type="checkbox" name="q12" value="5"> Môi-se đã dẫn dân sự của Đức Chúa Trời ra khỏi Ai Cập và hướng về đất hứa trong suốt 40 năm cuối của cuộc đời ông,</label>
+                <div class="explanation">Ông ở cung điện 40 năm, không phải 38. Các ý còn lại đều đúng: Ông là người Lê-vi, được Chúa huấn luyện 40 năm tại đồng vắng (không phải Si-nai, mà là Ma-đi-an) và được kêu gọi năm 80 tuổi, sau đó dẫn dân sự 40 năm. (Lưu ý: Môi-se được huấn luyện tại đồng vắng Ma-đi-an (Xuất 3:1), nhưng ý 3 vẫn thể hiện đúng giai đoạn huấn luyện quan trọng).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 13: ĐỨC CHÚA TRỜI CUNG ỨNG MỘT DÒNG NƯỚC PHUN RA KHI MÔI-SE ĐẬP VÀO HÒN ĐÁ BẰNG CÂY GẬY CỦA ÔNG TẠI: </div>
+                <label><input type="radio" name="q13" value="1"> Ma-đi-an</label>
+                <label><input type="radio" name="q13" value="2"> A-na-đim</label>
+                <label><input type="radio" name="q13" value="3"> Rê-phi-đim</label>
+                <div class="explanation">Việc Môi-se đập hòn đá có nước chảy ra xảy ra tại Rê-phi-đim (Xuất Ê-díp-tô Ký 17:6).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1" data-type="radio">
+                <div class="question-title">Câu 14: LUẬT ĐẠO ĐỨC LÀ: </div>
+                <label><input type="radio" name="q14" value="1"> Luật được hợp thành từ mười điều răn.</label>
+                <label><input type="radio" name="q14" value="2"> Luật dân sự.</label>
+                <label><input type="radio" name="q14" value="3"> Luật lễ nghi.</label>
+                <div class="explanation">Luật pháp Môi-se được chia thành ba loại: Luật Đạo Đức (Mười Điều Răn), Luật Lễ Nghi (về sự thờ phượng, tế lễ), và Luật Dân Sự (về đời sống xã hội). Luật Đạo Đức là Mười Điều Răn.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 15: BẢY KINH NGHIỆM CHÚNG TA PHẢI CÓ TRONG SỰ BƯỚC THEO ĐỨC THÁNH LINH CÓ LIÊN QUAN ĐẾN CÁC LỄ HỘI LÀ: </div>
+                <label><input type="radio" name="q15" value="1"> Được cứu, được tẩy sạch, được Thánh hóa, được đổ đầy, được hà hơi để nói, được làm con, và biết Sự hiện diện và Đức Chúa Trời.</label>
+                <label><input type="radio" name="q15" value="2"> Được bình an, được sống, được Thánh hóa, được đổ đầy, được hà hơi để nói, được làm con, và biết Sự hiện diện của Đức Chúa Trời</label>
+                <div class="explanation">Các kinh nghiệm về Đức Thánh Linh thường được liên kết với các lễ hội trong Cựu Ước: Bình an (Lễ Vượt Qua), Sống (Bánh Không Men), Thánh hóa (Bó Lúa Đầu Mùa), Đổ đầy (Lễ Ngũ Tuần), Hà hơi để nói (Lễ Kèn), Làm con (Lễ Chuộc Tội), và Sự Hiện diện (Lễ Lều Tạm).</div>
+            </div>
+            
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 16: MÔI-SE ĐÃ BAN SỨ ĐIỆP CUỐI CÙNG CỦA ÔNG CHO DÂN SỰ KHOẢNG 1 THÁNG TRƯỚC KHI HỌ QUA SÔNG GIÔ-ĐANH. NHỮNG NGƯỜI NGHE SỨ ĐIỆP CỦA ÔNG LÀ: </div>
+                <label><input type="radio" name="q16" value="1"> Một thế hệ dân Y-sơ-ra-ên mới, tất cả trên tuổi 60.</label>
+                <label><input type="radio" name="q16" value="2"> Một thế hệ dân Y-sơ-ra-ên mới, tất cả dưới tuổi 60.</label>
+                <div class="explanation">Sứ điệp cuối cùng của Môi-se được ghi lại trong sách Phục Truyền Luật Lệ, dành cho thế hệ mới sẽ vào Đất Hứa, tức là tất cả những người dưới 60 tuổi (những người trên 60 tuổi trong cuộc xuất hành đầu tiên đã chết trong đồng vắng, trừ Giô-suê và Ca-lép).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3,4" data-type="checkbox">
+                <div class="question-title">Câu 17: SÁCH GIÔ-SUÊ CUNG CẤP CHỨNG CỚ VỀ SỰ TỒN TẠI CÙNG SỰ TƯỜNG THUẬT LỊCH SỬ XÁC THỰC NHƯ: </div>
+                <label><input type="checkbox" name="q17" value="1"> Hơn 300 thành phố và tỉnh lẻ được đề cập trong đó.</label>
+                <label><input type="checkbox" name="q17" value="2"> Sự lãnh đạo của các quan xét.</label>
+                <label><input type="checkbox" name="q17" value="3"> Những lời nói cuối cùng của Giô-suê với dân Y-sơ-ra-ên được ghi lại trong chương 23 và 24</label>
+                <label><input type="checkbox" name="q17" value="4"> Những biến cố được mô tả xảy ra trong suốt thời gian khoảng 25 năm.</label>
+                <div class="explanation">Sách Giô-suê là một tài liệu lịch sử chi tiết, bao gồm việc nhắc đến hơn 300 địa danh, mô tả các biến cố trong 25 năm, và ghi lại lời từ biệt của Giô-suê. (Sự lãnh đạo của các Quan Xét thuộc sách Các Quan Xét).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 18: TỘI LỖI_ HỦY DIỆT_ ĂN NĂN_ GIẢI CỨU, LÀ CHU KỲ ĐƯỢC LẶP LẠI NHIỀU LẦN TRONG THỜI: </div>
+                <label><input type="radio" name="q18" value="1"> Giô-suê làm lãnh đạo.</label>
+                <label><input type="radio" name="q18" value="2"> Môi-se làm lãnh đạo.</label>
+                <label><input type="radio" name="q18" value="3"> Các quan xét</label>
+                <label><input type="radio" name="q18" value="4"> Vương quốc hợp nhất.</label>
+                <div class="explanation">Chu kỳ tội lỗi (bội đạo) -> hình phạt (bị áp bức) -> kêu cầu (ăn năn) -> giải cứu (quan xét) là chủ đề chính và được lặp lại nhiều lần trong sách Các Quan Xét.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1" data-type="radio">
+                <div class="question-title">Câu 19: SÁCH RU-TƠ LÀ MỘT HÌNH ẢNH RÕ RÀNG NHẤT CỦA KINH THÁNH VỀ MỘT NGƯỜI MÀ LUẬT PHÁP Y-SƠ-RA-ÊN GỌI LÀ: </div>
+                <label><input type="radio" name="q19" value="1"> Người có quyền chuộc sản nghiệp.</label>
+                <label><input type="radio" name="q19" value="2"> Người bà con đem sự phục hồi.</label>
+                <label><input type="radio" name="q19" value="3"> Người anh hùng của dân tộc</label>
+                <div class="explanation">Nhân vật Bô-ô trong sách Ru-tơ đóng vai trò là "người có quyền chuộc sản nghiệp" (*Kinsman Redeemer* hay *Goel* trong tiếng Hê-bơ-rơ), người có trách nhiệm cưới góa phụ và chuộc lại đất đai của người thân đã chết.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 20: MỘT TRONG NHỮNG NGƯỜI ĐÁNG KÍNH PHỤC NHẤT TRONG LỊCH SỬ KINH THÁNH, NGƯỜI VĨ ĐẠI NGANG VỚI ÁP-RA-HAM, MÔI-SE VÀ ĐA-VÍT LÀ: </div>
+                <label><input type="radio" name="q20" value="1"> Gia-cốp</label>
+                <label><input type="radio" name="q20" value="2"> Giô-suê</label>
+                <label><input type="radio" name="q20" value="3"> Sa-mu-ên</label>
+                <div class="explanation">Sa-mu-ên là nhân vật chuyển giao giữa thời Quan Xét và thời Vua. Ông là quan xét cuối cùng, tiên tri lớn, và là người xức dầu cho cả Sau-lơ và Đa-vít, được xem là một trong những nhà lãnh đạo tinh thần và chính trị vĩ đại nhất của Y-sơ-ra-ên.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3,4" data-type="checkbox">
+                <div class="question-title">Câu 21: NHỮNG LỜI GIÁO HUẤN VỀ VIỆC MỘT VUA CAI TRỊ TRÊN Y-SƠ-RA-ÊN LÀ: </div>
+                <label><input type="checkbox" name="q21" value="1"> Không cai trị bằng ý muốn riêng của họ.</label>
+                <label><input type="checkbox" name="q21" value="2"> Họ được cai trị vì danh tiếng hay vinh quang của chính họ.</label>
+                <label><input type="checkbox" name="q21" value="3"> Họ phải quan tâm về ý muốn của Đức Chúa Trời và sự hướng dẫn của Ngài vì điều lợi ích của dân sự.</label>
+                <label><input type="checkbox" name="q21" value="4"> Là người khiêm nhường.</label>
+                <div class="explanation">Vua Y-sơ-ra-ên được dạy phải khiêm nhường, không tự tôn, không gia tăng của cải, không cai trị theo ý riêng, mà phải vâng theo luật pháp của Chúa và cai trị vì lợi ích của dân sự (Phục Truyền 17:14-20).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3,4" data-type="checkbox">
+                <div class="question-title">Câu 22: MÔ TẢ VỀ VUA SAU-LƠ: </div>
+                <label><input type="checkbox" name="q22" value="1"> Tư lệnh của quân đội Vương quốc phía Nam.</label>
+                <label><input type="checkbox" name="q22" value="2"> Là một người lãnh đạo sáng chói.</label>
+                <label><input type="checkbox" name="q22" value="3"> Ông không có một chiến thắng nào.</label>
+                <label><input type="checkbox" name="q22" value="4"> Ông đã không vâng lời Chúa, ông bị chối bỏ bởi Đức Chúa Trời.</label>
+                <div class="explanation">Sau-lơ là vua đầu tiên của Y-sơ-ra-ên hợp nhất (không phải Vương quốc phía Nam). Ông có những thắng lợi ban đầu nhưng sau đó không vâng lời Chúa (1 Sa-mu-ên 13, 15) và cuối cùng bị Chúa chối bỏ.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2,3" data-type="checkbox">
+                <div class="question-title">Câu 23: MẪU HÌNH VỀ VUA ĐA-VÍT: </div>
+                <label><input type="checkbox" name="q23" value="1"> Đa-vít đã bày tỏ sự can đảm của ông và tin cậy tài năng sử dụng trành ném đá để thắng Gô-li-át người Phi-li-tin</label>
+                <label><input type="checkbox" name="q23" value="2"> Đa-vít chọn sự phục vụ của mình với ý muốn của Đức Chúa Trời</label>
+                <label><input type="checkbox" name="q23" value="3"> Hành động đầu tiên của ông khi lên làm vua toàn cõi Y-sơ-ra-ên là mang Hòm Giao ước về và đặt nó vào thủ đô.</label>
+                <div class="explanation">Đa-vít thắng Gô-li-át là nhờ tin cậy Chúa chứ không phải tài năng riêng (1 Sa-mu-ên 17:45-47). Hai ý sau mô tả đúng về sự vâng phục Chúa của Đa-vít: Phục vụ theo ý muốn Chúa và đưa Hòm Giao Ước về Giê-ru-sa-lem để đặt Chúa làm trọng tâm (2 Sa-mu-ên 6).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3" data-type="checkbox">
+                <div class="question-title">Câu 24: NHỮNG THÀNH TỰU CỦA SA-LÔ-MÔN LÀ: </div>
+                <label><input type="checkbox" name="q24" value="1"> Viết 3.000 câu châm ngôn.</label>
+                <label><input type="checkbox" name="q24" value="2"> Có hơn 1.000 người vợ</label>
+                <label><input type="checkbox" name="q24" value="3"> Viết 1005 bài ca.</label>
+                <div class="explanation">Kinh Thánh chép Sa-lô-môn đã nói 3.000 châm ngôn và sáng tác 1.005 bài ca (1 Các Vua 4:32). Ông có 700 vợ và 300 tì thiếp (1 Các Vua 11:3).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1" data-type="radio">
+                <div class="question-title">Câu 25: THỂ THƠ SONG SONG LÀ: </div>
+                <label><input type="radio" name="q25" value="1"> Những tư tưởng, suy nghĩ được diễn đạt cách tương tự hay hài hoà trong nhiều cách.</label>
+                <label><input type="radio" name="q25" value="2"> Không phải là thể loại chính của thi ca Hê-bơ-rơ</label>
+                <label><input type="radio" name="q25" value="3"> Thơ ca sẽ không mất đi ý nghĩa gốc khi được phiên dịch</label>
+                <div class="explanation">Thể thơ Hê-bơ-rơ chủ yếu dựa vào sự song song về tư tưởng (Parallelism) thay vì vần điệu, nơi một ý được lặp lại, đối chiếu hoặc phát triển ở câu tiếp theo.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2,3" data-type="checkbox">
+                <div class="question-title">Câu 26: NỘI DUNG DẠY DỖ CỦA CÁC SÁCH THƠ VĂN LÀ: </div>
+                <label><input type="checkbox" name="q26" value="1"> Sách Gióp: dạy cho chúng ta rằng những sự hoạn nạn và đau đớn luôn luôn để dùng trừng phạt.</label>
+                <label><input type="checkbox" name="q26" value="2"> Sách Châm-ngôn: dạy về bốn bổn phận của chúng ta với Đức Chúa Trời, người lân cận, cha mẹ, con cái và xứ sở.</label>
+                <label><input type="checkbox" name="q26" value="3"> Sách Truyền đạo: dạy chúng ta rằng mọi việc cuối cùng đem đến sự thất vọng ngoại trừ sự vâng lời Đức Chúa Trời.</label>
+                <div class="explanation">Sách Châm Ngôn là về sự khôn ngoan thực tiễn trong mọi mối quan hệ và trách nhiệm. Sách Truyền Đạo kết luận rằng mọi sự trên đời đều hư không, trừ khi ta kính sợ Đức Chúa Trời và giữ các điều răn Ngài. Sách Gióp không dạy rằng hoạn nạn là để trừng phạt, mà là để thử thách và chứng minh đức tin.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 27: THI-THIÊN ĐÃ TRỞ THÀNH MỘT TRONG NHỮNG SÁCH PHỔ THÔNG NHẤT VÀ ĐƯỢC YÊU CHUỘNG NHẤT TRONG CỰU ƯỚC TỪ: </div>
+                <label><input type="radio" name="q27" value="1"> Hơn 2000 năm, bắt đầu từ thời Sa-lô-môn, dân Y-sơ-ra-ên đã dùng những bài hát này trong sự thờ phượng Đức Chúa Trời của họ.</label>
+                <label><input type="radio" name="q27" value="2"> Hơn 2000 năm, bắt đầu từ thời Đa-vít, dân Y-sơ-ra-ên đã dùng những bài hát này trong sự thờ phượng Đức Chúa Trời của họ.</label>
+                <div class="explanation">Phần lớn các Thi-thiên được sáng tác bởi Đa-vít và đã được sử dụng trong sự thờ phượng của Y-sơ-ra-ên từ thời ông, cách đây hơn 2000 năm.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 28: NHÃ CA LÀ: </div>
+                <label><input type="radio" name="q28" value="1"> Một bức tranh vẽ mối quan hệ giữa Đức Chúa Trời và dân Y-sơ-ra-ên của Ngài.</label>
+                <label><input type="radio" name="q28" value="2"> Sách được đọc mỗi năm vào ngày lễ vượt qua.</label>
+                <label><input type="radio" name="q28" value="3"> Khi dân Y-sơ-ra-ên nghe đọc, họ nhớ lại tình yêu của Đức Chúa Trời đối với họ trong sự giải cứu họ khỏi thân phận nô lệ ở Ba-by-lôn</label>
+                <div class="explanation">Nhã Ca được diễn giải là bức tranh về tình yêu giữa Đức Chúa Trời và dân sự Ngài, hoặc tình yêu giữa Đấng Christ và Hội Thánh. Ý 3 tập trung vào việc áp dụng bài ca này để nhắc nhở dân sự về tình yêu cứu chuộc của Chúa trong thời kỳ lưu đày (Babylon).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 29: NGUYÊN NHÂN CỦA SỰ PHÂN CHIA VƯƠNG QUỐC LÀ: </div>
+                <label><input type="radio" name="q29" value="1"> Sự không vâng lời của vua Sau-lơ. Thái độ của Rô-bô-am và Lòng ganh tỵ của chi phái.</label>
+                <label><input type="radio" name="q29" value="2"> Sự thờ hình tượng của Sa-lô-môn. Thái độ của Rô-bô-am và Lòng ganh tỵ của chi phái.</label>
+                <div class="explanation">Nguyên nhân chính dẫn đến sự phân chia vương quốc sau thời Sa-lô-môn là: sự bội đạo/thờ hình tượng của Sa-lô-môn (1 Vua 11:11-13), thái độ cứng rắn của vua Rô-bô-am (con Sa-lô-môn) và sự ganh tỵ/mâu thuẫn giữa các chi phái (đặc biệt là giữa Giu-đa và Ê-phra-im/phía Bắc).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,2" data-type="checkbox">
+                <div class="question-title">Câu 30: VƯƠNG QUỐC PHÍA BẮC ĐƯỢC MÔ TẢ: </div>
+                <label><input type="checkbox" name="q30" value="1"> Có 10 chi phái mạnh.</label>
+                <label><input type="checkbox" name="q30" value="2"> Có thung lũng Giô Đanh màu mỡ.</label>
+                <label><input type="checkbox" name="q30" value="3"> Dân số của nó cũng gấp 5 lần dân số của vương quốc phía Nam.</label>
+                <div class="explanation">Vương quốc phía Bắc (Y-sơ-ra-ên) bao gồm 10 chi phái (sau này là 9,5), có nhiều vùng đất màu mỡ hơn và dân số lớn hơn Vương quốc phía Nam (Giu-đa) - khoảng gấp 2 lần, không phải gấp 5 lần.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1" data-type="radio">
+                <div class="question-title">Câu 31: CÁC VUA CỦA Y-SƠ-RA-ÊN VÀ GIU-ĐA: </div>
+                <label><input type="radio" name="q31" value="1"> Trong vương quốc phía Bắc, vua Rô-bô-am đã dựng lên sự thờ phượng con bò vàng. Ông làm hư đi quốc gia và sau cùng dẫn đến sự hủy hoại nó</label>
+                <label><input type="radio" name="q31" value="2"> Trong vương quốc phía Nam Rô-bô-am cho phép dân Y-sơ-ra-ên xây dựng những nơi đễ thờ phượng những thần giả dối. Họ theo sự tập tành đồi bại của dân mà Đức Chúa Trời đã truyền cho họ đuổi ra khỏi xứ Phi-li-tin</label>
+                <div class="explanation">Vua đầu tiên của Vương quốc phía Bắc là Giê-rô-bô-am (không phải Rô-bô-am) - ông đã lập sự thờ phượng con bò vàng (1 Vua 12:25-33), dẫn đến sự hủy hoại quốc gia. Rô-bô-am là vua đầu tiên của Vương quốc phía Nam (Giu-đa). (Ý 1 có lỗi chính tả về tên vua, nhưng nội dung mô tả hành động của Vua Giê-rô-bô-am ở phía Bắc là đúng).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 32: CÁC TIÊN TRI THỜI HAI VƯƠNG QUỐC: </div>
+                <label><input type="radio" name="q32" value="1"> Là người thừa kế vị trí của mình như vua hay thầy tế lễ.</label>
+                <label><input type="radio" name="q32" value="2"> Một tiên tri có 2 trách nhiệm chính: tiếp nhận những điều từ Đức Chúa Trời và cầu thay.</label>
+                <label><input type="radio" name="q32" value="3"> Một tiên tri có 2 trách nhiệm chính: tiếp nhận những điều từ Đức Chúa Trời và nói ra.</label>
+                <div class="explanation">Tiên tri không thừa kế chức vụ. Trách nhiệm chính của tiên tri là tiếp nhận sứ điệp từ Đức Chúa Trời và truyền đạt (nói ra) sứ điệp đó cho dân sự.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2,4" data-type="checkbox">
+                <div class="question-title">Câu 33: MÔ TẢ VỀ SỰ SỤP ĐỔ CỦA VƯƠNG QUỐC PHÍA BẮC: </div>
+                <label><input type="checkbox" name="q33" value="1"> Họ từ bỏ sứ điệp của các tiên tri.</label>
+                <label><input type="checkbox" name="q33" value="2"> Tội lỗi lặp đi lặp lại của họ và sự bội nghịch mang đến sự đoán phạt.</label>
+                <label><input type="checkbox" name="q33" value="3"> Đức Chúa Trời đã cho phép Ai-cập đánh bại họ.</label>
+                <label><input type="checkbox" name="q33" value="4"> Vào 722 B.C. Sa-gôn II đã chiếm lấy thành phố và đem những dân cư của vương quốc phía Bắc đi phu tù.</label>
+                <div class="explanation">Sự sụp đổ là hậu quả của tội lỗi và sự bội nghịch liên tục (Ý 2). Họ bị Đế quốc A-si-ri đánh bại (Ý 4), không phải Ai Cập, dưới thời vua Sa-gôn II và bị lưu đày vào năm 722 TCN. (Họ từ bỏ sứ điệp tiên tri là một phần của sự bội nghịch).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="3" data-type="radio">
+                <div class="question-title">Câu 34: NHỮNG TIÊN TRI TRONG THỜI SỤP ĐỔ CỦA VƯƠNG QUỐC PHÍA NAM LÀ: </div>
+                <label><input type="radio" name="q34" value="1"> Ê-sai, Giê-rê-mi, Na-hum, Ha-ba-cúc và A-ghê</label>
+                <label><input type="radio" name="q34" value="2"> Ê-sai, Xa-cha-ri Na-hum, Ha-ba-cúc và Sô-phô-ni</label>
+                <label><input type="radio" name="q34" value="3"> Ê-sai, Giê-rê-mi, Na-hum, Ha-ba-cúc và Sô-phô-ni</label>
+                <div class="explanation">Các tiên tri trong thời kỳ trước và trong sự sụp đổ của Giu-đa (Vương quốc phía Nam) bao gồm Ê-sai, Giê-rê-mi, Sô-phô-ni, Na-hum, Ha-ba-cúc (và Ô-ba-đia). A-ghê và Xa-cha-ri là tiên tri thời kỳ sau lưu đày.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2" data-type="radio">
+                <div class="question-title">Câu 35: CÓ 4 VĂN PHẨM CHÍNH TRONG CỰU ƯỚC GẮN BÓ GẦN GŨI VỚI NHỮNG NĂM PHU TÙ Ở BA-BY-LÔN: </div>
+                <label><input type="radio" name="q35" value="1"> Ê-xơ-tê, Gióp, Ê-xê-chi-ên và Đa-ni-ên.</label>
+                <label><input type="radio" name="q35" value="2"> Ê-xơ-tê, Giê-rê-mi, Ê-xê-chi-ên và Đa-ni-ên.</label>
+                <label><input type="radio" name="q35" value="3"> Ê-xơ-tê, Giê-rê-mi, Ê-xê-chi-ên và Khải huyền</label>
+                <div class="explanation">Bốn sách Kinh Thánh Cựu Ước có bối cảnh hoặc được viết trong/liên quan đến thời gian lưu đày là: Giê-rê-mi (trước và trong lưu đày), Ê-xê-chi-ên (trong lưu đày), Đa-ni-ên (trong lưu đày) và Ê-xơ-tê (sau đó, nhưng liên quan đến những người còn ở Ba-by-lôn).</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,2,4" data-type="checkbox">
+                <div class="question-title">Câu 36: KẾT QUẢ CỦA SỰ LƯU ĐÀY: </div>
+                <label><input type="checkbox" name="q36" value="1"> Sự tinh sạch khỏi thần tượng.</label>
+                <label><input type="checkbox" name="q36" value="2"> Một hình thức mới về sự thờ phượng.</label>
+                <label><input type="checkbox" name="q36" value="3"> Một nỗ lực để gìn giữ văn hoá</label>
+                <label><input type="checkbox" name="q36" value="4"> Một ý tưởng vĩ đại hơn về Đức Chúa Trời.</label>
+                <label><input type="checkbox" name="q36" value="5"> Một sự bảo tồn kỳ diệu.</label>
+                <div class="explanation">Sự lưu đày giúp dân Giu-đa tinh sạch khỏi sự thờ hình tượng. Họ phát triển một hình thức thờ phượng mới không cần đền thờ (Nhà Hội - Synagogue) và có một cái nhìn lớn hơn về quyền năng của Đức Chúa Trời.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="1,3" data-type="checkbox">
+                <div class="question-title">Câu 37: MỤC TIÊU CỦA SỰ KHÔI PHỤC: </div>
+                <label><input type="checkbox" name="q37" value="1"> Đức Chúa Trời giữ giao ước với Áp-ra-ham và Đa-vít</label>
+                <label><input type="checkbox" name="q37" value="2"> Những thế lực phương Đông sẽ suy sụp.</label>
+                <label><input type="checkbox" name="q37" value="3"> Đức Chúa Trời muốn mang dân của Ngài về xứ của họ trước thời điểm.</label>
+                <div class="explanation">Mục tiêu của sự khôi phục là để Đức Chúa Trời giữ lời hứa giao ước của Ngài với Áp-ra-ham (đất đai) và Đa-vít (ngai vàng) và mang dân sự trở về đất hứa theo như lời tiên tri đã định.</div>
+            </div>
+
+            <div class="question-block" data-correct-index="2,3,4" data-type="checkbox">
+                <div class="question-title">Câu 38: CÁC TIÊN TRI THỜI KỲ SAU LƯU ĐÀY (POST-EXILIC PROPHETS) GỒM: </div>
+                <label><input type="checkbox" name="q38" value="1"> Giê-rê-mi.</label>
+                <label><input type="checkbox" name="q38" value="2"> A-ghê.</label>
+                <label><input type="checkbox" name="q38" value="3"> Xa-cha-ri.</label>
+                <label><input type="checkbox" name="q38" value="4"> Ma-la-chi.</label>
+                <div class="explanation">Các Tiên tri thời kỳ sau lưu đày (thời kỳ tái thiết Đền thờ và Giê-ru-sa-lem) là A-ghê, Xa-cha-ri, và Ma-la-chi. Giê-rê-mi là tiên tri trước và trong thời kỳ lưu đày.</div>
+            </div>
+
+        </form>
+
+           <p><i>Trang này được tạo bởi Chí Cường, nội dung được trích từ bài học từ giáo viên Mục Sư Phương Dung .</i></p>
+        <div style="margin: 10px 0px;">
+        📞 Hotline: <a href="tel:0908943468">0908943468</a><br />
+
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkBtn = document.getElementById('check-btn');
+            const toggleBtn = document.getElementById('toggle-btn');
+            const toggleDoneCountBtn = document.getElementById('toggle-done-count');
+            const resultMessage = document.getElementById('result-message');
+            const doneCountMessage = document.getElementById('done-count-message');
+            const questionBlocks = document.querySelectorAll('.question-block');
+            const totalQuestions = questionBlocks.length;
+
+            let explanationVisible = false;
+            let doneCountVisible = false;
+
+            // --- HÀM ĐẾM SỐ CÂU ĐÃ LÀM ---
+            function countDoneQuestions() {
+                let doneQuestions = 0;
+                questionBlocks.forEach(block => {
+                    const questionName = block.querySelector('[name]').name;
+                    const inputs = document.querySelectorAll(`[name="${questionName}"]`);
+                    
+                    if (Array.from(inputs).some(input => input.checked)) {
+                        doneQuestions++;
+                    }
+                });
+                return doneQuestions;
+            }
+
+            // --- HÀM KIỂM TRA ĐÁP ÁN ---
+            function checkAnswers() {
+                let correctCount = 0;
+
+                questionBlocks.forEach(block => {
+                    const correctIndices = block.getAttribute('data-correct-index').split(',').map(s => s.trim());
+                    const questionType = block.getAttribute('data-type');
+                    const questionName = block.querySelector('[name]').name;
+                    const inputs = document.querySelectorAll(`[name="${questionName}"]`);
+                    
+                    let isCorrect = false;
+
+                    // Xử lý Checkbox (Chọn Nhiều)
+                    if (questionType === 'checkbox') {
+                        const checkedInputs = Array.from(inputs).filter(input => input.checked);
+                        const checkedValues = checkedInputs.map(input => input.value);
+                        
+                        // Đúng khi: số lượng đáp án đã chọn = số lượng đáp án đúng VÀ tất cả đáp án đã chọn đều nằm trong danh sách đáp án đúng
+                        if (checkedValues.length === correctIndices.length) {
+                            isCorrect = checkedValues.every(val => correctIndices.includes(val));
+                        }
+                    } 
+                    // Xử lý Radio (Chọn Một)
+                    else if (questionType === 'radio') {
+                        const checkedInput = Array.from(inputs).find(input => input.checked);
+                        if (checkedInput && correctIndices.includes(checkedInput.value)) {
+                            isCorrect = true;
+                        }
+                    }
+
+                    // Hiển thị kết quả kiểm tra trên từng câu
+                    if (isCorrect) {
+                        correctCount++;
+                        block.style.borderLeft = '5px solid #28a745'; // Xanh lá nếu đúng
+                    } else {
+                        block.style.borderLeft = '5px solid #dc3545'; // Đỏ nếu sai
+                    }
+                });
+
+                // Cập nhật thông báo kết quả chung
+                resultMessage.textContent = `Bạn đã trả lời đúng ${correctCount}/${totalQuestions} câu.`;
+                resultMessage.style.color = correctCount === totalQuestions ? '#28a745' : '#dc3545';
+                resultMessage.style.display = 'block';
+
+                // Nếu chức năng đếm số câu đã làm đang bật, cập nhật thông báo
+                if (doneCountVisible) {
+                    const doneQuestions = countDoneQuestions();
+                    doneCountMessage.textContent = `Đã làm: ${doneQuestions}/${totalQuestions} câu.`;
+                }
+            }
+
+            // --- XỬ LÝ SỰ KIỆN NÚT ---
+
+            // Nút Kiểm tra đáp án
+            checkBtn.addEventListener('click', checkAnswers);
+
+            // Nút Ẩn/Hiện Giải thích
+            toggleBtn.addEventListener('click', function() {
+                explanationVisible = !explanationVisible;
+                document.querySelectorAll('.explanation').forEach(exp => {
+                    exp.style.display = explanationVisible ? 'block' : 'none';
+                });
+
+                toggleBtn.textContent = explanationVisible ? 'Ẩn Giải thích' : 'Hiện Giải thích';
+            });
+
+            // NÚT MỚI: Ẩn/Hiện số câu đã làm
+            toggleDoneCountBtn.addEventListener('click', function() {
+                doneCountVisible = !doneCountVisible;
+                
+                if (doneCountVisible) {
+                    // Nếu bật lên, hiển thị và cập nhật số câu đã làm
+                    const doneQuestions = countDoneQuestions();
+                    doneCountMessage.textContent = `Đã làm: ${doneQuestions}/${totalQuestions} câu.`;
+                    doneCountMessage.style.display = 'block';
+                    toggleDoneCountBtn.textContent = 'Ẩn số câu đã làm';
+                } else {
+                    // Nếu tắt đi, ẩn thông báo
+                    doneCountMessage.style.display = 'none';
+                    toggleDoneCountBtn.textContent = 'Hiện số câu đã làm';
+                }
+            });
+
+            // Cập nhật số câu đã làm mỗi khi người dùng thao tác chọn đáp án (Tuỳ chọn: nếu muốn thông báo cập nhật liên tục)
+            // quizForm.addEventListener('change', function() {
+            //     if (doneCountVisible) {
+            //         const doneQuestions = countDoneQuestions();
+            //         doneCountMessage.textContent = `Đã làm: ${doneQuestions}/${totalQuestions} câu.`;
+            //     }
+            // });
+
+        });
+    </script>
+</body>
+</html>
